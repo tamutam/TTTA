@@ -1,6 +1,7 @@
 package com.example.keisuke.myapplication;
 
 import com.android.volley.Response;
+import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 
@@ -8,7 +9,7 @@ import org.json.JSONObject;
 /**
  * Created by keisuke on 2015/03/22.
  */
-public class Request {
+public class Requests {
    // java String tagJsonObj = “json_obj_req;
    // mRequestQueue = Volley.newRequestQueue(context);
 
@@ -20,7 +21,7 @@ public class Request {
             // リクエストパラメーターを設定する
             ,null
             // 通信成功時のリスナーを設定する
-            ,new Response.Listener() {
+            ,new Response.Listener<JSONObject>() {
         @Override
         public void onResponse(JSONObject response) {
             // 通信成功時の処理
