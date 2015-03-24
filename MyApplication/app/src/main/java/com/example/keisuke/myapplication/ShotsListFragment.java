@@ -3,14 +3,26 @@ package com.example.keisuke.myapplication;
 import android.os.Bundle;
 import android.app.ListFragment;            //これか
 //import android.support.v4.app.ListFragment;//これ
+import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ListView;
+
+import com.android.volley.toolbox.ImageLoader;
+
+import java.util.List;
 
 /**
  * Created by keisuke on 2015/03/24.
  */
 public class ShotsListFragment extends ListFragment implements AbsListView.OnScrollListener {
+    private static final String TAG = ShotsListFragment.class.getSimpleName();
+    private ListView mListView;
+    private String mCategory;
+    private ShotsListAdapter mAdapter;
+    private int mCount = 0;
+    private List<Shots> mList;
+
     public static ShotsListFragment newInstance(String category) {
         // 新しくインスタンスを生成
         ShotsListFragment fragment = new ShotsListFragment();
@@ -38,6 +50,9 @@ public class ShotsListFragment extends ListFragment implements AbsListView.OnScr
     // ListViewの１つをクリックした時に呼ばれるコールバック
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
+        Log.i(TAG, "onListItemClick:");
+        Log.i(TAG, "position = " + position);
+        Log.i(TAG, "id = " + id);
         // ListViewRowが持っている画像のurlを引数として渡す
         DetailDialogFragment detailDialogFragment = DetailDialogFragment.newInstance(mList.get(position).imageUrl);
         detailDialogFragment.show(getFragmentManager(), TAG);
@@ -48,5 +63,15 @@ public class ShotsListFragment extends ListFragment implements AbsListView.OnScr
             mCategory = getArguments().getString("category");
         }
         return mCategory;
+    }
+
+    @Override
+    public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+    }
+
+    @Override
+    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
     }
 }

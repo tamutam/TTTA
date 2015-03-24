@@ -58,4 +58,8 @@ public class Shots extends Model {
                 .orderBy("Shots_Id ASC")
                 .execute();
     }
+
+    public static List<Shots> getCategoryList(String mCategory, int mCount) {
+        return null;
+    }
 }

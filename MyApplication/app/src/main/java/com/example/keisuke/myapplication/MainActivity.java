@@ -1,7 +1,7 @@
 package com.example.keisuke.myapplication;
 
 import android.app.ActionBar;
-//import android.support.v7.app.ActionBarActivity;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -13,13 +13,23 @@ import android.view.MenuItem;
 
 import java.util.Locale;
 
+//import android.support.v7.app.ActionBarActivity;
+//import android.support.v4.view.PagerAdapter;
+//import android.view.Menu;
+//import android.view.MenuItem;
+//import android.view.View;
+//import com.crashlytics.android.Crashlytics;//クラッシュのレポート？的なの
 
-public class MainActivity extends FragmentActivity {
+
+public class MainActivity extends FragmentActivity implements ActionBar.TabListener{
+
+    private SectionsPagerAdapter mSectionsPagerAdapter;
+    private ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Crashlytics.start(this);//これなんだろう？
+        //Crashlytics.start(this);//これなんだろう？←クラッシュのやつっぽい？
         setContentView(R.layout.activity_main);
 
         //アクションバーにViewPagerのコントロールができるタブを設定
@@ -48,7 +58,7 @@ public class MainActivity extends FragmentActivity {
             actionBar.addTab(
                     actionBar.newTab()
                             .setText(mSectionsPagerAdapter.getPageTitle(i))
-                            .setTabListener(this)
+                            .setTabListener((ActionBar.TabListener) this)///////////////////??????????????????????????????
             );
         }
 
@@ -67,7 +77,7 @@ public class MainActivity extends FragmentActivity {
             actionBar.addTab(
                     actionBar.newTab()
                             .setText(mSectionsPagerAdapter.getPageTitle(i))
-                            .setTabListener(this)
+                            .setTabListener((ActionBar.TabListener) this)/////////////////????????????????????
             );
         }
 
@@ -140,5 +150,39 @@ public class MainActivity extends FragmentActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+    }
+
+    @Override
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+    }
+
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+    }
+
+    private class SectionsPagerAdapter extends PagerAdapter {
+        public SectionsPagerAdapter(FragmentManager supportFragmentManager) {
+        }
+
+        @Override
+        public int getCount() {
+            return 0;
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object object) {
+            return false;
+        }
+
+        public int getPageTitle(int i) {
+            return 0;
+        }
     }
 }
