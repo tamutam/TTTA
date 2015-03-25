@@ -21,7 +21,7 @@ public class ShotsDto {
         List<Shots> shotsList = new ArrayList<Shots>();
 
         for (int i = 0; i < jsonArray.length(); i++) {
-            Shots shots = ShotsParser.parseShots(jsonArray.optJSONObject(i), category);
+            Shots shots = ShotsDto.parseShots(jsonArray.optJSONObject(i), category);
             shotsList.add(shots);
         }
 
@@ -36,16 +36,16 @@ public class ShotsDto {
         //JSONObject shots = jsonArray.getJSONObject(i);
 
 
-        shotsDTO.setShotsId(shots.getString("id"));
+        shotsDTO.setShotsId(jsonObject.optInt("id"));
         shotsDTO.setCategory("everyone");
-        shotsDTO.setTitle(shots.getString("title"));
-        shotsDTO.setImageUrl(shots.getString("image_url"));
-        shotsDTO.setImageTeaserUrl(shots.getString("image_teaser_url"));
+        shotsDTO.setTitle(jsonObject.optString("title"));
+        shotsDTO.setImageUrl(jsonObject.optString("image_url"));
+        shotsDTO.setImageTeaserUrl(jsonObject.optString("image_teaser_url"));
         shotsDTO.setPlayerName(player.getString("name"));
-        shotsDTO.setLikesCount(Integer.parseInt(shots.getString("likes_count")));
+        shotsDTO.setLikesCount(Integer.parseInt(jsonObject.optString("likes_count")));
 
          Shots shots = new Shots(shotsDTO);
-        shots.save();
+         shots.save();
 
     return shots;
     }
