@@ -41,11 +41,11 @@ public class ShotsDto {
         shotsDTO.setTitle(jsonObject.optString("title"));
         shotsDTO.setImageUrl(jsonObject.optString("image_url"));
         shotsDTO.setImageTeaserUrl(jsonObject.optString("image_teaser_url"));
-        shotsDTO.setPlayerName(player.getString("name"));
+        shotsDTO.setPlayerName(player(jsonObject).optString("name"));
         shotsDTO.setLikesCount(Integer.parseInt(jsonObject.optString("likes_count")));
 
-         Shots shots = new Shots(shotsDTO);
-         shots.save();
+        Shots shots = shotsDTO;
+        shots.save();
 
     return shots;
     }

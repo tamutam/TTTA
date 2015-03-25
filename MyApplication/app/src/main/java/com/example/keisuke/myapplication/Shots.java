@@ -90,4 +90,8 @@ public class Shots extends Model {
     public static Shots getShots(int id) {
         return null;
     }
+
+    public void setPlayerName(String name) {
+        this.playerName = name;
+    }
 }

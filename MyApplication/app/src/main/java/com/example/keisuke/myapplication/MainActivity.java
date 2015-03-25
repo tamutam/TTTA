@@ -1,6 +1,7 @@
 package com.example.keisuke.myapplication;
 
 import android.app.ActionBar;
+//import android.app.FragmentTransaction;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,8 +9,9 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
+//import android.view.Menu;
+//import android.view.MenuItem;
 
 import java.util.Locale;
 
@@ -23,8 +25,10 @@ import java.util.Locale;
 
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener{
 
-    private SectionsPagerAdapter mSectionsPagerAdapter;
-    private ViewPager mViewPager;
+    private final static String TAG = "MainActivity";
+
+    SectionsPagerAdapter mSectionsPagerAdapter;
+    ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,6 +168,11 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+    }
+
+    @Override
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
 
     }
 

@@ -1,16 +1,15 @@
 package com.example.keisuke.myapplication;
 
+import android.app.ListFragment;
 import android.os.Bundle;
-import android.app.ListFragment;            //これか
-//import android.support.v4.app.ListFragment;//これ
 import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ListView;
 
-import com.android.volley.toolbox.ImageLoader;
-
 import java.util.List;
+
+//import android.support.v4.app.ListFragment;//これ
 
 /**
  * Created by keisuke on 2015/03/24.
@@ -55,7 +54,7 @@ public class ShotsListFragment extends ListFragment implements AbsListView.OnScr
         Log.i(TAG, "id = " + id);
         // ListViewRowが持っている画像のurlを引数として渡す
         DetailDialogFragment detailDialogFragment = DetailDialogFragment.newInstance(mList.get(position).imageUrl);
-        detailDialogFragment.show(getFragmentManager(), TAG);
+       // detailDialogFragment.show(getFragmentManager(), TAG);
     }
 
     private String getCategory() {

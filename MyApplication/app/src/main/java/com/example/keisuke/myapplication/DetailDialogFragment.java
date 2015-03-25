@@ -1,5 +1,6 @@
 package com.example.keisuke.myapplication;
 
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
@@ -39,7 +40,11 @@ public class DetailDialogFragment extends DialogFragment {
         return v;
     }
 
+    public void show(FragmentManager fragmentManager, String tag) {
 
-  //  public void show(FragmentManager fragmentManager, String tag) {
+    }
+
+
+    //  public void show(FragmentManager fragmentManager, String tag) {
   //  }
 }
