@@ -91,11 +91,11 @@ public class ShotsListAdapter extends BaseAdapter {
     }
 
     public boolean add (List<Shots> shots){
-        boolean ress = shotsList.addAll(shots);
-        if(ress){
+        boolean less = shotsList.addAll(shots);
+        if(less){
             notifyDataSetChanged();
         }
-        return ress;
+        return less;
     }
 
 }

@@ -1,12 +1,16 @@
 package com.example.keisuke.myapplication;
 
 import android.app.Application;
-//import android.content.res.Configuration;
+import android.text.TextUtils;
 
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.Configuration;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.Volley;
+
+//import android.content.res.Configuration;
 
 /**
  * Created by keisuke on 2015/03/22.
@@ -41,10 +45,41 @@ public class AppController extends Application{
     public static synchronized AppController getInstance(){//synchronizedで排他制御
         return mInstance;
     }
+////////////////////////////////////////////
+    public RequestQueue getRequestQueue(){
 
-    public ImageLoader getImageLoader() {
-        return null;
+        if(mRequestQueue == null){
+            mRequestQueue = Volley.newRequestQueue(getApplicationContext());
+        }
+        return mRequestQueue;
     }
+
+    public ImageLoader getImageLoader(){
+        getRequestQueue();
+        if(mImageLoader == null){
+            mImageLoader = new ImageLoader(this.mRequestQueue, new LruBitmapCache());
+        }
+        return mImageLoader;
+    }
+
+    public <T> void addToRequestQueue(Request<T> req, String tag){
+        req.setTag(TextUtils.isEmpty(tag) ? TAG : tag);
+        getRequestQueue().add(req);
+    }
+
+    public <T> void addToRequestQueue(Request<T> req) {
+        req.setTag(TAG);
+        getRequestQueue().add(req);
+
+
+    }
+
+    public void cancelPendingRequests(Object tag) {
+        if (mRequestQueue != null) {
+            mRequestQueue.cancelAll(tag);
+        }
+    }
+
 }
 
 
